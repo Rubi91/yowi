@@ -18,7 +18,6 @@
         name: "Box",
         data () {
             return {
-                hasError: false,
                 playerOptions: {
                     autoplay: false,
                     controls: true,
@@ -47,17 +46,18 @@
                 console.warn('Error loading url.')
             },
             playVideo: function (source) {
+                // Video configs
                 const video = {
                     withCredentials: false,
-                    type: 'application/x-mpegurl',
-                    src: source
+                    type: 'application/x-mpegurl', // type m3u8
+                    src: source // video url
                 }
                 this.player.src(video)
                 this.player.load()
             }
         },
         mounted () {
-            const src = this.url
+            const src = this.url // Video url m3u8
             this.playVideo(src)
         },
     }
